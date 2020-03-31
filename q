@@ -1,0 +1,47 @@
+[33mcommit 100c7b6bf4ccbe4aad842f496fb6d3fed3eb4531[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: headnodic <headnodic>
+Date:   Tue Mar 31 12:37:59 2020 -0400
+
+    Complete Project 2: Stock Picker with unit test
+
+[33mcommit 4527103e75841c45b42dfb23c7dbec08205188e0[m
+Author: headnodic <headnodic>
+Date:   Mon Mar 30 13:16:48 2020 -0400
+
+    Move project to separate folder
+
+[33mcommit afdb828e599434e0821abcc384561cb0c12630ae[m
+Author: headnodic <headnodic>
+Date:   Mon Mar 30 13:10:07 2020 -0400
+
+    Complete Project 1: Caesar Cipher with unit tests
+
+[33mcommit 7e930fba4cc7cfd57123679d337f8ab4657b83d0[m
+Author: headnodic <headnodic@hotmail.com>
+Date:   Wed Mar 25 11:14:37 2020 -0400
+
+    Create LICENSE
+
+[33mcommit 947492cc27d31615e846fbf1cd0bedf2c6657994[m
+Author: headnodic <headnodic>
+Date:   Wed Mar 25 11:12:50 2020 -0400
+
+    Add README.md
+
+[33mcommit 611224527b2ec80e2f07caa55f362333aa7d13f9[m
+Author: headnodic <headnodic>
+Date:   Wed Mar 25 11:05:28 2020 -0400
+
+    Blogger project completed
+
+[33mcommit 203ddeaf1eb434f3f6e6b3f48afbad2befcdc852[m
+Author: headnodic <headnodic>
+Date:   Wed Mar 18 10:27:59 2020 -0400
+
+    Create model Article
+
+[33mcommit 024ea25b82fc960998057c13d511075e0faabfbc[m
+Author: headnodic <headnodic>
+Date:   Wed Mar 18 10:17:20 2020 -0400
+
+    Init rails blogger
