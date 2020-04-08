@@ -69,44 +69,29 @@ module Enumerable
 
   def my_any?(arg=nil)
     enum = self.to_enum
+    res = false
 
-    if arg != nil
-      if arg.class == Regexp
-        loop do
-          res = arg.match?(enum.next)
-          if res == true
-            return res 
-          end
-        end
-      else
-        loop do
-          res = enum.next.is_a? arg
-          if res == true
-            return res
-          end
-        end
-      end
-    elsif block_given?
-      loop do
+    loop do
+      if arg != nil && arg.class == Regexp
+        res = arg.match?(enum.next)
+      elsif arg != nil
+        res = enum.next.is_a? arg
+      elsif block_given?
         res = yield(enum.next)
-        if res == true
-          return res
-        end
-      end
-    else
-      loop do
+      else
         res = enum.next
-        if res == true
-          return res
-        end
+      end
+
+      if res == true
+        return true
       end
     end
 
-    return false
+    return res
   end
 
   def my_none?(arg=nil)
-    return self.my_all?(arg)
+    return !self.my_any?(arg)
   end
 
   def my_count
