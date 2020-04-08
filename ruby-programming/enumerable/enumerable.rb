@@ -138,6 +138,14 @@ module Enumerable
   end
 
   def my_map
+    return enum_for(:my_map) unless block_given?
+
+    enum = self.to_enum
+    res = []
+    loop do
+      res << yield(enum.next)
+    end
+    res
   end
 
   def my_inject
