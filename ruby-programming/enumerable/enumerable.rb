@@ -55,9 +55,9 @@ module Enumerable
             return res
           end
         end
-      elsif arg == Numeric
+      else
         loop do
-          res = enum.next.is_a? Numeric
+          res = enum.next.is_a? arg
           if res == false
             return res
           end
