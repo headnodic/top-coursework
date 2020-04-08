@@ -95,4 +95,31 @@ RSpec.describe "Enumerable" do
     end
   end
 
+  context "#my_none?" do
+    it "handles blocks, return true" do
+      expect(%w[ant bear cat].my_none? {|word| word.length == 5}).to eq(true)
+    end
+    it "handles blocks, return false" do
+      expect(%w[ant bear cat].my_none? {|word| word.length >= 4}).to eq(false)
+    end
+    it "handles pattern arguments" do
+      expect(%w[ant bear cat].my_none?(/d/)).to eq(true)
+    end
+    it "handles class arguments" do
+      expect([1,3.14,42].my_none?(Float)).to eq(false)
+    end
+    it "handles empty collection" do
+      expect([].my_none?).to eq(true)
+    end
+    it "handles only nil element" do
+      expect([nil].my_none?).to eq(true)
+    end
+    it "handles only nil and false elements" do
+      expect([nil,false].my_none?).to eq(true)
+    end
+    it "handles more than nil and false elements" do
+      expect([nil,false,true].my_none?).to eq(false)
+    end
+  end
+
 end
