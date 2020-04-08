@@ -2,7 +2,8 @@
 # Create #my_each, a method identical to #each
 # Create #my_each_with_index
 # Create #my_select
-# Create #my_all?  # Create #my_any?
+# Create #my_all?
+# Create #my_any?
 # Create #my_none
 # Create #my_count
 # Create #my_map
@@ -81,7 +82,42 @@ module Enumerable
     return true
   end
 
-  def my_any
+  def my_any?(arg=nil)
+    enum = self.to_enum
+
+    if arg != nil
+      if arg.class == Regexp
+        loop do
+          res = arg.match?(enum.next)
+          if res == true
+            return res 
+          end
+        end
+      else
+        loop do
+          res = enum.next.is_a? arg
+          if res == true
+            return res
+          end
+        end
+      end
+    elsif block_given?
+      loop do
+        res = yield(enum.next)
+        if res == true
+          return res
+        end
+      end
+    else
+      loop do
+        res = enum.next
+        if res == true
+          return res
+        end
+      end
+    end
+
+    return false
   end
 
   def my_none
