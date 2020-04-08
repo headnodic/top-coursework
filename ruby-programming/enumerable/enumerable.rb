@@ -91,7 +91,27 @@ module Enumerable
   end
 
   def my_none?(arg=nil)
-    return !self.my_any?(arg)
+    enum = self.to_enum
+    i = 0
+    res = false
+
+    loop do
+      if arg != nil && arg.class == Regexp
+        res = arg.match?(enum.next)
+      elsif arg != nil
+        res = enum.next.is_a? arg
+      elsif block_given?
+        res = yield(enum.next)
+      else
+        res = enum.next
+      end
+
+      if res == true
+        i += 1
+      end
+    end
+
+    return i == 0
   end
 
   def my_count
