@@ -74,4 +74,25 @@ RSpec.describe "Enumerable" do
     end
   end
 
+  context "#my_any?" do
+    it "handle blocks, return true" do
+      expect(%w[ant bear cat].my_any? {|word| word.length >= 3}).to eq(true)
+    end
+    it "handle blocks, return false" do
+      expect(%w[ant bear cat].my_any? {|word| word.length >= 4}).to eq(true)
+    end
+    it "handle pattern arguments" do
+      expect(%w[ant bear cat].my_any?(/d/)).to eq(false)
+    end
+    it "handle class arguments" do
+      expect([nil,true,99].my_any?(Integer)).to eq(true)
+    end
+    it "handle no arguments, no blocks" do
+      expect([nil,true,99].my_any?).to eq(true)
+    end
+    it "handle empty collection" do
+      expect([].my_any?).to eq(false)
+    end
+  end
+
 end
