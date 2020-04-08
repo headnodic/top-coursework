@@ -134,4 +134,13 @@ RSpec.describe "Enumerable" do
     end
   end
 
+  context "#my_map" do
+    it "returns a new array with results of running block for each element" do
+      expect((1..4).my_map {|i| i*i}).to eq([1,4,9,16])
+    end
+    it "returns an enumerator if no block given" do
+      expect((1..4).my_map.class).to eq(Enumerator)
+    end
+  end
+
 end
