@@ -114,7 +114,27 @@ module Enumerable
     return i == 0
   end
 
-  def my_count
+  def my_count(arg=nil)
+    enum = self.to_enum
+    count = 0
+    
+    if block_given?
+      loop do
+        if arg != nil
+          res = yield(enum.next) == arg
+        else
+          res = yield(enum.next)
+        end
+
+        if res == true
+          count += 1
+        end
+      end
+    else
+      count = self.size
+    end
+
+    return count
   end
 
   def my_map

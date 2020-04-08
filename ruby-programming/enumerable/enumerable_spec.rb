@@ -122,4 +122,16 @@ RSpec.describe "Enumerable" do
     end
   end
 
+  context "#my_count" do
+    it "returns the number of items in enum through enumeration" do
+      expect([1,2,4,2].my_count).to eq(4)
+    end
+    it "returns the number of item equal to argument, if argument given" do
+      expect([1,2,4,2].count(2)).to eq(2)
+    end
+    it "counts the number of elements yielding a true value, if block given" do
+      expect([1,2,4,2].count {|x| x%2==0}).to eq(3)
+    end
+  end
+
 end
