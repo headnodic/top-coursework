@@ -8,6 +8,7 @@ RSpec.describe "Enumerable" do
   a = [1,2,3,4,5]
   h = {"foo"=>1,"bar"=>2}
   r = (1..5)
+  my_proc = Proc.new {|i| i * i}
 
   context "#my_each" do
     it "calls the given block once for each array element" do
@@ -144,6 +145,12 @@ RSpec.describe "Enumerable" do
     end
     it "returns an enumerator if no block given" do
       expect((1..4).my_map.class).to eq(Enumerator)
+    end
+    it "handles a proc" do
+      expect((1..4).my_map(my_proc)).to eq([1,4,9,16])
+    end
+    it "executes proc even with a block" do
+      expect((1..4).my_map(my_proc) {|i| i * 3}).to eq([1,4,9,16])
     end
   end
 
