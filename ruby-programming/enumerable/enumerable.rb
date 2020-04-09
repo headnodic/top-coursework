@@ -148,7 +148,18 @@ module Enumerable
     res
   end
 
-  def my_inject
+  def my_inject(arg=nil)
+    enum = self.to_enum
+    a = arg == nil ? enum.next : arg
+
+    if block_given?
+      loop do
+        a = yield(a, enum.next)
+      end
+    else
+      raise LocalJumpError.new("no block given")
+    end
+    a
   end
 
 end
