@@ -1,5 +1,9 @@
 require_relative "enumerable.rb"
 
+def multiply_els(arr)
+  arr.my_inject {|a, b| a * b}
+end
+
 RSpec.describe "Enumerable" do
   a = [1,2,3,4,5]
   h = {"foo"=>1,"bar"=>2}
@@ -54,43 +58,43 @@ RSpec.describe "Enumerable" do
   end
 
   context "#my_all?" do
-    it "handle blocks, return true" do
+    it "returns true if the block is true for all elements" do
       expect(%w[ant bear cat].my_all? {|word| word.length >= 3}).to eq(true)
     end
-    it "handle blocks, return false" do
+    it "returns false if the block is false for any element" do
       expect(%w[ant bear cat].my_all? {|word| word.length >= 4}).to eq(false)
     end
-    it "handle pattern arguments" do
+    it "handles pattern arguments" do
       expect(%w[ant bear cat].my_all?(/t/)).to eq(false)
     end
-    it "handle class arguments" do
+    it "handles class arguments" do
       expect([1,2i,3.14].my_all?(Numeric)).to eq(true)
     end
-    it "handle nil elements" do
+    it "handles nil elements" do
       expect([nil,true,99].my_all?).to eq(false)
     end
-    it "handle empty collection" do
+    it "handles empty collections" do
       expect([].my_all?).to eq(true)
     end
   end
 
   context "#my_any?" do
-    it "handle blocks, return true" do
+    it "returns true if the block is true for one element" do
       expect(%w[ant bear cat].my_any? {|word| word.length >= 3}).to eq(true)
     end
-    it "handle blocks, return false" do
+    it "returns true if the block is true for one or more elements" do
       expect(%w[ant bear cat].my_any? {|word| word.length >= 4}).to eq(true)
     end
-    it "handle pattern arguments" do
+    it "handles pattern arguments" do
       expect(%w[ant bear cat].my_any?(/d/)).to eq(false)
     end
-    it "handle class arguments" do
+    it "handles class arguments" do
       expect([nil,true,99].my_any?(Integer)).to eq(true)
     end
-    it "handle no arguments, no blocks" do
+    it "handles without arguments and blocks" do
       expect([nil,true,99].my_any?).to eq(true)
     end
-    it "handle empty collection" do
+    it "handles empty collections" do
       expect([].my_any?).to eq(false)
     end
   end
@@ -140,6 +144,24 @@ RSpec.describe "Enumerable" do
     end
     it "returns an enumerator if no block given" do
       expect((1..4).my_map.class).to eq(Enumerator)
+    end
+  end
+
+  context "#my_inject" do
+    it "combines all elements by applying binary operations from a block" do
+      expect((5..10).my_inject {|sum, n| sum + n}).to eq(45)
+    end
+    it "combines all elements with an initial value and a block" do
+      expect((5..10).my_inject(1) {|product, n| product * n}).to eq(151200)
+    end
+    it "combines all elements by applying binary operations from a symbol" do
+      longest = %w{ cat sheep bear }.my_inject do |memo, word|
+        memo.length > word.length ? memo : word
+      end
+      expect(longest).to eq("sheep")
+    end
+    it "combines all elements by applying binary operations from a method" do
+      expect(multiply_els([2,4,5])).to eq(40)
     end
   end
 
