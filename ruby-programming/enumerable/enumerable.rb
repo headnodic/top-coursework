@@ -137,13 +137,13 @@ module Enumerable
     return count
   end
 
-  def my_map
-    return enum_for(:my_map) unless block_given?
+  def my_map(proc=nil)
+    return enum_for(:my_map) unless proc || block_given?
 
     enum = self.to_enum
     res = []
     loop do
-      res << yield(enum.next)
+      res << (proc != nil ? proc.call(enum.next) : yield(enum.next))
     end
     res
   end
