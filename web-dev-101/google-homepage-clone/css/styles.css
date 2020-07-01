@@ -1,0 +1,150 @@
+body {
+	font-family: arial,sans-serif;
+}
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	margin: 15px 10px;
+}
+
+.nav div {
+	display: flex;
+	align-items: center;
+}
+
+.nav a, footer a {
+	text-decoration: none;
+	color: #000000;
+	font-size: 13px;
+}
+
+.nav a:hover, footer a:hover {
+	text-decoration: underline;
+}
+
+.nav-pri a {
+	padding-left: 15px;
+}
+
+.nav-sec a {
+	padding-right: 15px;
+
+}
+
+.icons {
+	width: 20px;
+	height: 20px;
+	padding-right: 15px;
+}
+
+.products {
+	width: 30px;
+	height: 30px;
+	background: url(../images/i1_1967ca6a.png);
+	background-position: -136px -36px;
+}
+
+.signin {
+	border: 1px solid #4285f4;
+	background: #4285f4;
+	width: 70px;
+	height: 30px;
+	margin-right: 15px;
+	border-radius: 3px;
+}
+
+.signin a {
+	margin: 0 auto;
+	color: #ffffff;
+	padding-left: 15px;
+}
+
+.signin a:hover {
+	text-decoration: none;
+	cursor: default;
+}
+
+.main {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 500px;
+}
+
+.main .content {
+	display: flex;
+	flex-direction: column;
+}
+
+.logo {
+	justify-content: center;
+}
+
+.search input {
+	margin: 25px 0;
+	width: 500px;
+	height: 40px;
+	border-radius: 25px;
+	border: 1px solid lightgray;
+	padding-left: 25px;
+	padding-right: 10px;
+}
+
+.search input:hover {
+	box-shadow: 2px 2px 5px #f2f2f2, 2px -2px 5px #f2f2f2, -2px 2px 5px #f2f2f2, -2px -2px 5px #f2f2f2;
+}
+
+.search div {
+	justify-content: center;
+}
+
+.search button {
+	background: #f2f2f2;
+	font-size: 14px;
+	color: gray;
+	height: 40px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: none;
+	border-radius: 3px;
+}
+
+.search button:hover {
+	color: #000000;
+	cursor: pointer;
+}
+
+.main div {
+	display: flex;
+}
+
+footer {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	display: flex;
+	background: #f2f2f2;
+	border-top: 1px solid #e4e4e4;
+	justify-content: space-between;
+	height: 40px;
+	width: 100%;
+}
+
+footer div {
+	display: flex;
+}
+
+.footer-pri a {
+	padding-left: 27px;
+}
+
+.footer-sec a {
+	padding-right: 27px;
+}
+
+.footer-pri a, .footer-sec a {
+	align-self: center;
+}
+
+
